@@ -87,7 +87,7 @@ if taxable_income > 150000:
     slab1 = min(excess, 83333.33)
     tax1 = slab1 * 0.06
     tax += tax1
-    slab_breakdown.append({'Tax Slab': 'Rs. 150,000 – 233,333', 'Taxable Base': slab1, 'Rate': '6%', 'Tax Deducted': tax1})
+    slab_breakdown.append({'Tax Slab': 'Rs. 150,000 – 233,333', 'Taxable Base': slab1, 'Tax Rate': '6%', 'Tax Deducted': tax1})
     excess -= slab1
     
     # Slab 2: Next 41,666.67 @ 18%
@@ -95,7 +95,7 @@ if taxable_income > 150000:
         slab2 = min(excess, 41666.67)
         tax2 = slab2 * 0.18
         tax += tax2
-        slab_breakdown.append({'Tax Slab': 'Rs. 233,333 – 275,000', 'Taxable Base': slab2, 'Rate': '18%', 'Tax Deducted': tax2})
+        slab_breakdown.append({'Tax Slab': 'Rs. 233,333 – 275,000', 'Taxable Base': slab2, 'Tax Rate': '18%', 'Tax Deducted': tax2})
         excess -= slab2
         
     # Slab 3: Next 41,666.67 @ 24%
@@ -103,7 +103,7 @@ if taxable_income > 150000:
         slab3 = min(excess, 41666.67)
         tax3 = slab3 * 0.24
         tax += tax3
-        slab_breakdown.append({'Tax Slab': 'Rs. 275,000 – 316,667', 'Taxable Base': slab3, 'Rate': '24%', 'Tax Deducted': tax3})
+        slab_breakdown.append({'Tax Slab': 'Rs. 275,000 – 316,667', 'Taxable Base': slab3, 'Tax Rate': '24%', 'Tax Deducted': tax3})
         excess -= slab3
 
     # Slab 4: Next 41,666.67 @ 30%
@@ -111,16 +111,16 @@ if taxable_income > 150000:
         slab4 = min(excess, 41666.67)
         tax4 = slab4 * 0.30
         tax += tax4
-        slab_breakdown.append({'Tax Slab': 'Rs. 316,667 – 358,333', 'Taxable Base': slab4, 'Rate': '30%', 'Tax Deducted': tax4})
+        slab_breakdown.append({'Tax Slab': 'Rs. 316,667 – 358,333', 'Taxable Base': slab4, 'Tax Rate': '30%', 'Tax Deducted': tax4})
         excess -= slab4
 
     # Slab 5: Above 358,333.33 @ 36%
     if excess > 0:
         tax5 = excess * 0.36
         tax += tax5
-        slab_breakdown.append({'Tax Slab': 'Above Rs. 358,333', 'Taxable Base': excess, 'Rate': '36%', 'Tax Deducted': tax5})
+        slab_breakdown.append({'Tax Slab': 'Above Rs. 358,333', 'Taxable Base': excess, 'Tax Rate': '36%', 'Tax Deducted': tax5})
 else:
-    slab_breakdown.append({'Tax Slab': 'First Rs. 150,000 (Tax-Free Relief)', 'Taxable Base': taxable_income, 'Rate': '0%', 'Tax Deducted': 0.0})
+    slab_breakdown.append({'Tax Slab': 'First Rs. 150,000 (Tax-Free Relief)', 'Taxable Base': taxable_income, 'Tax Rate': '0%', 'Tax Deducted': 0.0})
 
 take_home_pay = gross_salary - employee_epf - tax - other_deductions
 effective_tax_rate = (tax / gross_salary) * 100 if gross_salary > 0 else 0
